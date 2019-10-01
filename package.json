@@ -1,0 +1,12 @@
+{
+  "name": "webdev-boilerplate",
+  "version": "1.0.0",
+  "description": "A boilerplate for static webdev using BrowserSync and PostCSS via npm scripts",
+  "keywords": [
+    "npm",
+    "npm-scripts",
+    "boilerplate"
+  ],
+  "author": "Seshal Jain",
+  "license": "MIT"
+}
