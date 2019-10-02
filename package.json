@@ -2,11 +2,39 @@
   "name": "webdev-boilerplate",
   "version": "1.0.0",
   "description": "A boilerplate for static webdev using BrowserSync and PostCSS via npm scripts",
+  "repository": "https://github.com/seshaljain/webdev-boilerplate.git",
   "keywords": [
     "npm",
     "npm-scripts",
     "boilerplate"
   ],
+  "scripts": {
+    "copy": "copyfiles -u 1 src/* dist",
+    "clear": "rimraf dist",
+    
+    "build:css": "postcss src/assets/css/main.css --use autoprefixer -o dist/assets/css/main.css",
+    "build:js": "copyfiles -u 1 src/assets/js/* dist/",
+    "build": "run-p build:*" ,
+    
+    "watch:html": "onchange src/*.* -- npm run copy",
+    "watch:css": "onchange src/assets/css/*.* -- npm run build:css",
+    "watch:js": "onchange src/assets/js/*.* -- npm run build:js",
+    
+    "browsersync": "browser-sync start --config bs-config.js",
+    "serve": "run-p browsersync watch:*",
+    
+    "start": "run-s clear copy build serve"
+  },
   "author": "Seshal Jain",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^9.6.1",
+    "browser-sync": "^2.26.7",
+    "copyfiles": "^2.1.1",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^6.1.0",
+    "postcss-cli": "^6.1.3",
+    "rimraf": "^3.0.0",
+    "uglify-js": "^3.6.0"
+  }
 }
